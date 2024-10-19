@@ -1,0 +1,22 @@
+{
+  "name": "cypressproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "cypress:mochawesome report": "cypress run --browser chrome --headless --spec cypress/e2e/UI-tests/login_tests.spec.cy.js --reporter cypress-mochawesome-reporter",
+    "cypress:tagExampleUsage": "cypress run --browser chrome --headless --spec cypress/e2e/UI-tests/*js --env grepTags=@smoke"  
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.13.1"
+  },
+  "devDependencies": {
+    "@cypress/grep": "^4.1.0",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-xpath": "^2.0.1"
+  }
+}
