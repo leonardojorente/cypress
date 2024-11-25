@@ -4,19 +4,31 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint cypress/e2e/*tests/*.cy.js",
+    "lint es": "eslint cypress/e2e/ui-tests/account-tests.spec.cy.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open",
     "cypress:mochawesome report": "cypress run --browser chrome --headless --spec cypress/e2e/UI-tests/login_tests.spec.cy.js --reporter cypress-mochawesome-reporter",
-    "cypress:tagExampleUsage": "cypress run --browser chrome --headless --spec cypress/e2e/UI-tests/*js --env grepTags=@smoke"  
+    "cypress:tagExampleUsage": "cypress run --browser chrome --headless --spec cypress/e2e/UI-tests/*js --env grepTags=@smoke",
+    "cypress:api tests login": "cypress run --browser chrome --headless --spec cypress/e2e/API-tests/SigninEndPointTests.spec.cy.js",
+    "cypress:ui tests login": "cypress run --browser chrome --spec cypress/e2e/UI-tests/login-tests.spec.cy.js",
+    "cypress:ui tests account": "cypress run --browser chrome --headless --spec cypress/e2e/ui-tests/account-tests.spec.cy.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^13.13.1"
+    "ajv": "^8.17.1",
+    "cypress": "^13.13.1",
+    "save-dev": "^0.0.1-security"
   },
   "devDependencies": {
     "@cypress/grep": "^4.1.0",
+    "@eslint/js": "^9.15.0",
     "cypress-mochawesome-reporter": "^3.8.2",
-    "cypress-xpath": "^2.0.1"
+    "cypress-xpath": "^2.0.1",
+    "eslint": "^9.15.0",
+    "eslint-config-cypress": "^0.28.0",
+    "eslint-plugin-cypress": "^4.1.0",
+    "globals": "^15.12.0"
   }
 }
