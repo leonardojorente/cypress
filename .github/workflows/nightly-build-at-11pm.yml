@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 60 #how long it will run before stops to execute the job
     runs-on: ubuntu-latest # System where it will be executed
     container:
-      image: image: cypress/base:latest
+      image: cypress/base:latest
     #GIhub STEPS: a github action or a script that will run on t he runner. Steps are executed in order
     #Runner is a machine that execute the job in a workflow
     steps:
