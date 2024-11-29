@@ -17,8 +17,6 @@ describe('E2E Login Tests', () => {
     cy.fixture('toast-message-fixture').then((data) => {
       toastmessagedata = data
     })
-
-
   })
 
   beforeEach(() => {
