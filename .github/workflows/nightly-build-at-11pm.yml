@@ -20,13 +20,10 @@ jobs:
     #Runner is a machine that execute the job in a workflow
     steps:
     - name: cypress checkout
-      - uses: actions/checkout@v4
-      - uses: cypress-io/github-action@v6
-        with:
-          parallel: true
+        uses: actions/checkout@v4
 
     - name: Run cypress tests
-        - uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v6
           with:
             parallel: true
       run: "npm cypress run --browser chrome --headless --spec cypress/e2e/API-tests/SigninEndPointTests.spec.cy.js"
