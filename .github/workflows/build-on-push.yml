@@ -17,7 +17,7 @@ jobs:
           # record: true
           # parallel: true
           #build: npm run build
-          start: npx run cypress:uitestslogin
+          start: npx cypress run --browser chrome --headless --spec cypress/e2e/ui-tests/login-tests.spec.cy.js
           browser: chrome
         env:
           HOME: /root
