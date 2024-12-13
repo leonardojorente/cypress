@@ -9,10 +9,13 @@ require('dotenv').config({
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   e2e: {
+    specPattern: 'cypress/e2e/*.cy.js',
+    
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
       require('@cypress/grep/src/plugin')(config);
 
+      
       on('task', {
         log(message) {
           console.log(message)
