@@ -20,7 +20,7 @@ jobs:
     #Runner is a machine that execute the job in a workflow
     steps:
     - name: cypress checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
     - name: Run cypress tests
         uses: cypress-io/github-action@v6
