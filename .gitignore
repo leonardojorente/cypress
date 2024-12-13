@@ -3,5 +3,4 @@ reports/
 screenshots/
 downloads/
 runner-results/
-cypress.env.json
 .env

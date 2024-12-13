@@ -13,12 +13,14 @@
     "cypress:api tests login": "cypress run --browser chrome --headless --spec cypress/e2e/api-tests/login-collection-tests.spec.cy.js",
     "cypress:ui tests login": "cypress run --browser chrome --spec cypress/e2e/ui-tests/login-tests.spec.cy.js",
     "cypress:ui tests account": "cypress run --browser chrome --headless --spec cypress/e2e/ui-tests/account-tests.spec.cy.js",
-    "cypress:Change env test": "cypress run --browser chrome --env 'TEST_ENV=example' --spec cypress/e2e/ui-tests/login-tests.spec.cy.js"
+    "cypress:Change env test1": "cross-env TEST_ENV=example cypress run --browser chrome --spec cypress/e2e/ui-tests/login-tests.spec.cy.js --env grepTags=@envTest",
+    "cypress:Change env test2": "cross-env cypress run --browser chrome --spec cypress/e2e/ui-tests/login-tests.spec.cy.js --env grepTags=@envTest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "ajv": "^8.17.1",
+    "cross-env": "^7.0.3",
     "save-dev": "^0.0.1-security"
   },
   "devDependencies": {
