@@ -24,8 +24,9 @@ import './commands/api-commands/reset-commands.js'
 import  LoginPayload from '../data/request-payloads/post-signin-payload.json';
 
 before(() => {
-  const userName = Cypress.env('user')
-  const password = Cypress.env('password')
+  const userName = Cypress.env('USER')
+  const password = Cypress.env('PASSWORD')
+
   LoginPayload.email = userName
   LoginPayload.senha = password
 

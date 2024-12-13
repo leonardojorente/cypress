@@ -2,8 +2,8 @@ import '../../support/commands/api-commands/login-commands.js'
 import  LoginPayload from '../../data/request-payloads/post-signin-payload.json';
 import Ajv from 'ajv';
 
-LoginPayload.email = Cypress.env('user');
-LoginPayload.senha = Cypress.env('password');
+LoginPayload.email = Cypress.env('USER');
+LoginPayload.senha = Cypress.env('PASSWORD');
 
 describe('API Login Tests', () => {
   it('TC01 Success Login by API', { tags: 'smoke' }, () => {

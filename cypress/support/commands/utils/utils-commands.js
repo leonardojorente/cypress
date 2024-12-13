@@ -10,19 +10,5 @@ class Utils {
     return result;
     }
 
-    selectEnvironment() {
-      switch (Cypress.env.ENVIRONMENT) {
-          case 'local':
-              break
-          case 'adm':
-              Cypress.env('user', Cypress.env('user_adm'))
-              Cypress.env('password', Cypress.env('password_adm'))
-              Cypress.env('base_url_web', Cypress.env('base_url_web_adm'))
-              break
-          default:
-              break
-      }
-  }
-
 }
 export default new Utils()

@@ -1,6 +1,6 @@
 import  RelativePath  from '../../../data/endpoint-relative-path.json';
 
-const baserRestURL = Cypress.env('base_url_api')
+const baserRestURL = Cypress.env('BASE_URL_API')
 
 Cypress.Commands.add('createNewTransaction', (body) =>{
     cy.request({

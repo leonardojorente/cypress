@@ -6,7 +6,7 @@ import locators from '../../support/locators.js'
 
 let topMenuComponentData
 let toastmessagedata
-const baseUrlWeb = Cypress.env('base_url_web')
+const baseUrlWeb = Cypress.env('BASE_URL_WEB')
 
 describe('E2E Account Tests', () => {
   before(() => {

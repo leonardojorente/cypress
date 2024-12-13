@@ -4,9 +4,9 @@ import locators from '../../support/locators.js'
 
 let toastmessagedata
 let topMenuComponentData
-const baseUrlWeb = Cypress.env('base_url_web')
-const userName = Cypress.env('user')
-const password = Cypress.env('password')
+const baseUrlWeb = Cypress.env('BASE_URL_WEB')
+const userName = Cypress.env('USER')
+const password = Cypress.env('PASSWORD')
 
 describe('E2E Login Tests', () => {
   before(() => {
@@ -43,5 +43,12 @@ describe('E2E Login Tests', () => {
     cy.ClickLoginButton()
 
     cy.get(locators.TOAST_MESSAGE, { timeout: 10000 }).should('contain',toastmessagedata.successLoginToastMessage) 
+  })
+
+  it('Change .env test', { tags: '@envTest' }, () => {
+    cy.log(Cypress.env('BASE_URL_WEB')) 
+    cy.log(Cypress.env('BASE_URL_API')) 
+    cy.log(Cypress.env('USER')) 
+    cy.log(Cypress.env('PASSWORD')) 
   })
 })

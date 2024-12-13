@@ -23,7 +23,7 @@ Cypress.Commands.add('doLoginWeb', (email, password) =>{
         cy.log('Login application')
         cy.InsertEmail(email)
         cy.InsertPassword(password)
-        cy.ClickLoginButton(password)
+        cy.ClickLoginButton()
 
         cy.get(locators.TOAST_MESSAGE, { timeout: 10000 }).should('contain',"Bem vindo") 
     })

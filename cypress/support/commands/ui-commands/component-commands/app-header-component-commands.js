@@ -1,7 +1,6 @@
-const SettingsDropDown = "a[data-test='menu-settings']"
-const SettingsDropDownOption = settingsOption => `//a[contains(@class,'dropdown-item') and contains(text(),'${settingsOption}')]`
+import locators from '../../../locators.js'
 
 Cypress.Commands.add('SelectSettingsOption', (settingsOption) =>{
-    cy.get(SettingsDropDown).click()
-    cy.xpath(SettingsDropDownOption(settingsOption)).click()
+    cy.get(locators.HEADER_COMPONENT.SETTINGS_DROP_DOWN).click()
+    cy.xpath(locators.HEADER_COMPONENT.SETTING_DROP_DOWN_OPTION(settingsOption)).click()
 })
