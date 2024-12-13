@@ -1,38 +1,75 @@
-#Github WORKFLOW: The whle yml file
-name: nightly-build-at-11pm
-#Github action Components:
-#Github EVENTS:  represents the activity that triggers reaction
+# #Github WORKFLOW: The whle yml file
+# name: nightly-build-at-11pm
+# #Github action Components:
+# #Github EVENTS:  represents the activity that triggers reaction
+# on:
+#   push:
+#   branches: [ "main" ]
+#   schedule:
+#     - cron: '0 23 * * *' #runs every day at 23:00 https://jasonet.co/posts/scheduled-actions/
+
+# #Github JOBS: a set of steps running in sequence to complety a task, each job runs on its own runner. jobs run in paralell except if you use
+# # use the action "needs", in this case, it will execute in the sequel of the job specified in the front of "needs" action   
+# jobs:
+#   e2e-smoke-cypress-job: #name of the job
+#     timeout-minutes: 60 #how long it will run before stops to execute the job
+#     runs-on: ubuntu-latest # System where it will be executed
+#     container:
+#       image: cypress/base:latest
+#     #GIhub STEPS: a github action or a script that will run on t he runner. Steps are executed in order
+#     #Runner is a machine that execute the job in a workflow
+#     steps:
+#     - name: cypress checkout
+#         uses: actions/checkout@v4
+
+#     - name: Run cypress tests
+#         uses: cypress-io/github-action@v6
+#           with:
+#             parallel: true
+#       run: "npm cypress run --browser chrome --headless --spec cypress/e2e/API-tests/SigninEndPointTests.spec.cy.js"
+#       env:
+#         HOME: /root
+#         USER:  ${{ secrets.USER }}
+#         PASSWORD: ${{ secrets.PASSWORD }}
+#         USER_ADM:  ${{ secrets.USER_ADM }}
+#         PASSWORD_ADM: ${{ secrets.PASSWORD_ADM }}
+#         BASE_URL_WEB_ADM: ${{ secrets.BASE_URL_WEB_ADM }}  
+#         BASE_URL_WEB: ${{ secrets.BASE_URL_WEB }} 
+#         BASE_URL_API: ${{ secrets.BASE_URL_API }}
+
+name: ci
+
 on:
   push:
-  branches: [ "main" ]
-  schedule:
-    - cron: '0 23 * * *' #runs every day at 23:00 https://jasonet.co/posts/scheduled-actions/
+    branches:
+      - main
+  pull_request:
 
-#Github JOBS: a set of steps running in sequence to complety a task, each job runs on its own runner. jobs run in paralell except if you use
-# use the action "needs", in this case, it will execute in the sequel of the job specified in the front of "needs" action   
 jobs:
-  e2e-smoke-cypress-job: #name of the job
-    timeout-minutes: 60 #how long it will run before stops to execute the job
-    runs-on: ubuntu-latest # System where it will be executed
-    container:
-      image: cypress/base:latest
-    #GIhub STEPS: a github action or a script that will run on t he runner. Steps are executed in order
-    #Runner is a machine that execute the job in a workflow
+  eslint:
+    runs-on: ubuntu-22.04
     steps:
-    - name: cypress checkout
-        uses: actions/checkout@v4
-
-    - name: Run cypress tests
-        uses: cypress-io/github-action@v6
-          with:
-            parallel: true
-      run: "npm cypress run --browser chrome --headless --spec cypress/e2e/API-tests/SigninEndPointTests.spec.cy.js"
-      env:
-        HOME: /root
-        USER:  ${{ secrets.USER }}
-        PASSWORD: ${{ secrets.PASSWORD }}
-        USER_ADM:  ${{ secrets.USER_ADM }}
-        PASSWORD_ADM: ${{ secrets.PASSWORD_ADM }}
-        BASE_URL_WEB_ADM: ${{ secrets.BASE_URL_WEB_ADM }}  
-        BASE_URL_WEB: ${{ secrets.BASE_URL_WEB }} 
-        BASE_URL_API: ${{ secrets.BASE_URL_API }}
+    - uses: actions/checkout@v3
+    - name: Install modules
+      run: npm install
+    - name: Run ESLint
+      run: npm run lint
+  cypress-tests-desktop:
+    needs: eslint
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run end-to-end tests on desktop viewport 🧪
+        uses: cypress-io/github-action@v5
+        env:
+          HOME: /root
+          USER:  ${{ secrets.USER }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          USER_ADM:  ${{ secrets.USER_ADM }}
+          PASSWORD_ADM: ${{ secrets.PASSWORD_ADM }}
+          BASE_URL_WEB_ADM: ${{ secrets.BASE_URL_WEB_ADM }}  
+          BASE_URL_WEB: ${{ secrets.BASE_URL_WEB }} 
+          BASE_URL_API: ${{ secrets.BASE_URL_API }}
+        with:
+          command: npm cypress run --browser chrome --headless --spec cypress/e2e/API-tests/SigninEndPointTests.spec.cy.js
