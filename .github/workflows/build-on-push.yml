@@ -18,7 +18,6 @@ jobs:
           # parallel: true
           #build: npm run build
           start: npx cypress run
-          store_artifacts: true
           browser: chrome
         env:
           HOME: /root
@@ -28,3 +27,11 @@ jobs:
           PASSWORD_ADM: ${{ secrets.PASSWORD_ADM }}
           BASE_URL_WEB: ${{ secrets.BASE_URL_WEB }} 
           BASE_URL_API: ${{ secrets.BASE_URL_API }}
+            
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-execution-report
+          path: cypress/reports/html
+          retention-days: 30
