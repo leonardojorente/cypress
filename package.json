@@ -14,7 +14,8 @@
     "cypress:ui tests login": "cypress run --browser chrome --spec cypress/e2e/ui-tests/login-tests.spec.cy.js",
     "cypress:ui tests account": "cypress run --browser chrome --headless --spec cypress/e2e/ui-tests/account-tests.spec.cy.js",
     "cypress:Change env test1": "cross-env TEST_ENV=example cypress run --browser chrome --spec cypress/e2e/ui-tests/login-tests.spec.cy.js --env grepTags=@envTest",
-    "cypress:Change env test2": "cross-env cypress run --browser chrome --spec cypress/e2e/ui-tests/login-tests.spec.cy.js --env grepTags=@envTest"
+    "cypress:Change env test2": "cross-env cypress run --browser chrome --spec cypress/e2e/ui-tests/login-tests.spec.cy.js --env grepTags=@envTest",
+    "cypress:cyTest":"cypress run --browser chrome --headless --spec cypress/e2e/ui-tests/account-tests.spec.cy.js"
   },
   "author": "",
   "license": "ISC",

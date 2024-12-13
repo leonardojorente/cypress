@@ -17,7 +17,7 @@ jobs:
           # record: true
           # parallel: true
           #build: npm run build
-          start: npx cypress run
+          start: npm run
           browser: chrome
         env:
           HOME: /root
