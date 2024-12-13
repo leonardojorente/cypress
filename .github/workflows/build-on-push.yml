@@ -17,9 +17,10 @@ jobs:
           # record: true
           # parallel: true
           #build: npm run build
-          start: npm run cypress:uitestslogin
+          start: npx run cypress:uitestslogin
           browser: chrome
         env:
+          HOME: /root
           USER:  ${{ secrets.USER }}
           PASSWORD: ${{ secrets.PASSWORD }}
           USER_ADM:  ${{ secrets.USER_ADM }}
