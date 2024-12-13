@@ -18,6 +18,7 @@ jobs:
           # parallel: true
           #build: npm run build
           start: npx cypress run
+          store_artifacts: true
           browser: chrome
         env:
           HOME: /root
