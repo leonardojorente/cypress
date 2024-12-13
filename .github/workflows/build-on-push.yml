@@ -14,7 +14,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          parallel: true
+          # record: true
+          # parallel: true
           #build: npm run build
           start: npm run cypress:uitestslogin
           browser: chrome
