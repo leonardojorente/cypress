@@ -14,11 +14,12 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          # record: true
-          # parallel: true
+          record: true
+          parallel: true
           #build: npm run build
           start: npm run
           browser: chrome
+          spec: cypress/e2e/ui-tests/account-tests.spec.cy.js
         env:
           HOME: /root
           USER:  ${{ secrets.USER }}
