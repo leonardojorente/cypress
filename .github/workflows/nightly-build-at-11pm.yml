@@ -55,14 +55,13 @@ jobs:
   #   - name: Run ESLint
   #     run: npm run lint
   cypress-tests-desktop:
-    #needs: eslint
+    # needs: eslint
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Run end-to-end tests on desktop viewport 🧪
         uses: cypress-io/github-action@v5
-        run: "npm cypress run --browser chrome --headless --spec cypress/e2e/API-tests/SigninEndPointTests.spec.cy.js"
         env:
           HOME: /root
           USER:  ${{ secrets.USER }}
@@ -72,5 +71,5 @@ jobs:
           BASE_URL_WEB_ADM: ${{ secrets.BASE_URL_WEB_ADM }}  
           BASE_URL_WEB: ${{ secrets.BASE_URL_WEB }} 
           BASE_URL_API: ${{ secrets.BASE_URL_API }}
-        # with:
-        #   command: npm cypress run --browser chrome --headless --spec cypress/e2e/API-tests/SigninEndPointTests.spec.cy.js
+        with:
+          command: npm test
