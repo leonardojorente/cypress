@@ -47,8 +47,12 @@ describe('E2E Login Tests', () => {
 
   it('Change .env test', { tags: '@envTest' }, () => {
     cy.log(Cypress.env('BASE_URL_WEB')) 
+    console.log(Cypress.env('BASE_URL_WEB')) 
     cy.log(Cypress.env('BASE_URL_API')) 
+    console.log(Cypress.env('BASE_URL_API')) 
     cy.log(Cypress.env('USER')) 
+    console.log(Cypress.env('USER'))
     cy.log(Cypress.env('PASSWORD')) 
+    console.log(Cypress.env('PASSWORD'))
   })
 })

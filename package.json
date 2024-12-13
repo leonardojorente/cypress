@@ -8,12 +8,12 @@
     "lint es": "eslint cypress/e2e/ui-tests/account-tests.spec.cy.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open",
-    "cypress:mochawesome report": "cypress run --browser chrome --headless --spec cypress/e2e/ui-tests/login_tests.spec.cy.js --reporter cypress-mochawesome-reporter",
+    "cypress:mochawesome report": "cypress run --browser chrome --headless --spec cypress/e2e/ui-tests/login-tests.spec.cy.js --reporter cypress-mochawesome-reporter",
     "cypress:tagExampleUsage": "cypress run --browser chrome --headless --spec cypress/e2e/ui-tests/*js --env grepTags=@smoke",
-    "cypress:api tests login": "cypress run --browser chrome --headless --spec cypress/e2e/API-tests/SigninEndPointTests.spec.cy.js",
+    "cypress:api tests login": "cypress run --browser chrome --headless --spec cypress/e2e/api-tests/login-collection-tests.spec.cy.js",
     "cypress:ui tests login": "cypress run --browser chrome --spec cypress/e2e/ui-tests/login-tests.spec.cy.js",
     "cypress:ui tests account": "cypress run --browser chrome --headless --spec cypress/e2e/ui-tests/account-tests.spec.cy.js",
-    "cypress:Change env test": "cypress run --browser chrome --env-file=.env.example --spec cypress/e2e/API-tests/SigninEndPointTests.spec.cy.js"
+    "cypress:Change env test": "cypress run --browser chrome --env 'TEST_ENV=example' --spec cypress/e2e/ui-tests/login-tests.spec.cy.js"
   },
   "author": "",
   "license": "ISC",
