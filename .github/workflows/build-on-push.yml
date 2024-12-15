@@ -23,7 +23,7 @@ jobs:
         with:
           #record: true
           #parallel: true
-          start: npm start
+          start: npx cypress run
           browser: chrome
           # spec: cypress/e2e/ui-tests/**.cy.ts
         env:
