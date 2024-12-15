@@ -26,7 +26,7 @@ jobs:
           start: npx run
           browser: chrome
           headless: true
-          spec: cypress/e2e/ui-tests/**.cy.ts
+          # spec: cypress/e2e/ui-tests/**.cy.ts
         env:
           HOME: /root
           USER:  ${{ secrets.USER }}
