@@ -25,7 +25,6 @@ jobs:
           #parallel: true
           start: npx run
           browser: chrome
-          headless: true
           # spec: cypress/e2e/ui-tests/**.cy.ts
         env:
           HOME: /root
