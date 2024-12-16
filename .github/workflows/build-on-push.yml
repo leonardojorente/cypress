@@ -4,9 +4,9 @@ jobs:
   cypress-run:
     name: Cypress run
     runs-on: ubuntu-22.04
-    # container:
-    #   image: cypress/browsers:node-22.11.0-chrome-130.0.6723.69-1-ff-132.0-edge-130.0.2849.56-1
-    #   options: --user 1001
+    container:
+      image: cypress/browsers:node-22.11.0-chrome-130.0.6723.69-1-ff-132.0-edge-130.0.2849.56-1
+      options: --user 1001
     strategy:
       # don't fail the entire matrix on failure
       fail-fast: false
@@ -23,11 +23,10 @@ jobs:
         with:
           #record: true
           #parallel: true
-          #start: npx cypress run
+          start: npx cypress run
           browser: chrome
-          command: npm run cyTest
+          # command: npm run cyTest
         env:
-          HOME: /root
           USER:  ${{ secrets.USER }}
           PASSWORD: ${{ secrets.PASSWORD }}
           USER_ADM:  ${{ secrets.USER_ADM }}
