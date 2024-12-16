@@ -25,7 +25,7 @@ jobs:
           #parallel: true
           #start: npx cypress run
           browser: chrome
-          command: npm cypress:cyTest
+          command: npm run cyTest
         env:
           HOME: /root
           USER:  ${{ secrets.USER }}
