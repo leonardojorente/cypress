@@ -23,9 +23,9 @@ jobs:
         with:
           #record: true
           #parallel: true
-          start: npx cypress run
+          #start: npx cypress run
           browser: chrome
-          spec: cypress/e2e/ui-tests/*.cy.{js,jsx,ts,tsx}
+          command: npm cypress:cyTest
         env:
           HOME: /root
           USER:  ${{ secrets.USER }}
