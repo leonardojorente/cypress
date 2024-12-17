@@ -1,33 +1,37 @@
 name: Cypress tests
-on: push
+on: 
+  push:
+    branches: [ "main" ]
 jobs:
-  cypress-run:
+  #JOB 1
+  eslint:
+    name: eslint run
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: install modules
+      run: npm install
+    - name: run ESlint
+      uses: npm run lint
+
+  #JOB 2
+  cypress-run-ui-tests:
+    needs: eslint
     name: Cypress run
     runs-on: ubuntu-22.04
     container:
       image: cypress/browsers:node-22.11.0-chrome-130.0.6723.69-1-ff-132.0-edge-130.0.2849.56-1
       options: --user 1001
-    strategy:
-      # don't fail the entire matrix on failure
-      fail-fast: false
-      matrix:
-        # run copies of the current job in parallel
-        containers: [1]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cypress run
+      - name: Cypress run api tests
         #https://github.com/marketertechnologies/cypress-github-action
         uses: cypress-io/github-action@v6
         with:
-          #record: true
-          #parallel: true
-          #start: npx cypress run
           command: npm run cyTest
-          #browser: chrome
-          #spec: cypress/e2e/UI-tests/login-tests.spec.cy.js
-          # command: npm run cyTest
         env:
           USER:  ${{ secrets.USER }}
           PASSWORD: ${{ secrets.PASSWORD }}

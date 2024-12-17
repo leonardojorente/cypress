@@ -41,10 +41,12 @@ describe('API Login Tests', () => {
     cy.doLoginAPI(LoginPayload)
       .then(response =>{
         // Validate the response against the schema file
+        // eslint-disable-next-line no-undef
         const isValid = ajv.validate(require('../../data/JSON-schemas/login-schema.json'), response.body);
       
         // Output the errors text
         if (!isValid) {
+          // eslint-disable-next-line no-undef
           cy.log('Schema validation failed. Errors:', JSON.stringify(validate.errors, null, 2));
           console.error('AJV Validation Errors:', ajv.errorsText());
         }

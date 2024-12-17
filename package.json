@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint cypress/e2e/*tests/*.cy.js",
+    "lint": "eslint cypress/e2e/API-tests/*.cy.js && cypress/e2e/UI-tests/*.cy.js",
     "lint es": "eslint cypress/e2e/UI-tests/account-tests.spec.cy.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open",
