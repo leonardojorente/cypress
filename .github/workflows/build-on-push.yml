@@ -19,7 +19,7 @@ jobs:
 
       - name: Cypress run
         #https://github.com/marketertechnologies/cypress-github-action
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v5
         with:
           #record: true
           #parallel: true
@@ -27,7 +27,6 @@ jobs:
           browser: chrome
           # command: npm run cyTest
         env:
-          DEBUG: '@cypress/github-action'
           USER:  ${{ secrets.USER }}
           PASSWORD: ${{ secrets.PASSWORD }}
           USER_ADM:  ${{ secrets.USER_ADM }}
