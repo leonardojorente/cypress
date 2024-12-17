@@ -10,10 +10,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: install modules
-      run: npm install
-    - name: run ESlint
-      uses: npm run lint
+    with:
+      command: npm run lint
 
   #JOB 2
   cypress-run-ui-tests:
