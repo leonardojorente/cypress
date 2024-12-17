@@ -13,8 +13,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: install modules
-      run: npm install
     - name: run ESlint
       run: npm run lint
 
