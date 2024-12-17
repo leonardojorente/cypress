@@ -25,7 +25,7 @@ jobs:
           #parallel: true
           start: npx cypress run
           browser: chrome
-          spec: cypress/e2e/ui-tests/login-tests.spec.cy.js
+          spec: cypress/e2e/UI-tests/login-tests.spec.cy.js
           # command: npm run cyTest
         env:
           USER:  ${{ secrets.USER }}
