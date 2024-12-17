@@ -23,10 +23,11 @@ jobs:
         with:
           #record: true
           #parallel: true
-          start: npx cypress run --spec UI-tests/login-tests.spec.cy.js
+          start: npx cypress run --spec cypress/e2e/ui-tests/login-tests.spec.cy.js
           browser: chrome
           # command: npm run cyTest
         env:
+          DEBUG: '@cypress/github-action'
           USER:  ${{ secrets.USER }}
           PASSWORD: ${{ secrets.PASSWORD }}
           USER_ADM:  ${{ secrets.USER_ADM }}
