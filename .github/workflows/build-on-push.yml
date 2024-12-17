@@ -23,7 +23,7 @@ jobs:
         with:
           #record: true
           #parallel: true
-          start: npx cypress run --spec cypress/e2e/ui-tests/login-tests.spec.cy.js
+          start: npx cypress run --spec cypress/e2e/UI-tests/login-tests.spec.cy.js
           browser: chrome
           # command: npm run cyTest
         env:
