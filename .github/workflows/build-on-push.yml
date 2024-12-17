@@ -19,12 +19,13 @@ jobs:
 
       - name: Cypress run
         #https://github.com/marketertechnologies/cypress-github-action
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           #record: true
           #parallel: true
-          start: npx cypress run --spec cypress/e2e/UI-tests/login-tests.spec.cy.js
+          start: npx cypress run
           browser: chrome
+          spec: cypress/e2e/ui-tests/login-tests.spec.cy.js
           # command: npm run cyTest
         env:
           USER:  ${{ secrets.USER }}
