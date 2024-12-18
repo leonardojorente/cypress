@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open",
     "cypress:mochawesome report": "cypress run --browser chrome --headless --spec cypress/e2e/UI-tests/login-tests.spec.cy.js --reporter cypress-mochawesome-reporter",
-    "cypress:tagExampleUsage": "cypress run --browser chrome --headless --spec cypress/e2e/UI-tests/*js --env grepTags=@smoke",
+    "cypress:tagExampleUsage": "cypress run --browser chrome --headless --spec cypress/e2e/*tests/*js --env grepTags=@smoke",
     "cypress:apiTests": "cypress run --browser chrome --headless --spec cypress/e2e/API-tests/*.spec.cy.js",
     "cypress:uiTests": "cypress run --browser chrome --spec cypress/e2e/UI-tests/*.spec.cy.js",
     "cypress:ui tests account": "cypress run --browser chrome --headless --spec cypress/e2e/UI-tests/account-tests.spec.cy.js",

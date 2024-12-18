@@ -19,6 +19,38 @@ jobs:
       run: npm run lint
 
   #JOB 2
+  cypress-run-api-tests:
+    needs: eslint
+    name: Cypress run api tests
+    runs-on: ubuntu-22.04
+    container:
+      image: cypress/browsers:node-22.11.0-chrome-130.0.6723.69-1-ff-132.0-edge-130.0.2849.56-1
+      options: --user 1001
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cypress run api tests
+        uses: cypress-io/github-action@v6
+        with:
+          command: npm run cypress:apiTests
+        env:
+          USER:  ${{ secrets.USER }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          USER_ADM:  ${{ secrets.USER_ADM }}
+          PASSWORD_ADM: ${{ secrets.PASSWORD_ADM }}
+          BASE_URL_WEB: ${{ secrets.BASE_URL_WEB }} 
+          BASE_URL_API: ${{ secrets.BASE_URL_API }}
+            
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-execution-report
+          path: cypress/reports/html
+          retention-days: 30
+
+  #JOB 3
   cypress-run-ui-tests:
     needs: eslint
     name: Cypress run ui tests
@@ -35,38 +67,6 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           command: npm run cypress:uiTests
-        env:
-          USER:  ${{ secrets.USER }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          USER_ADM:  ${{ secrets.USER_ADM }}
-          PASSWORD_ADM: ${{ secrets.PASSWORD_ADM }}
-          BASE_URL_WEB: ${{ secrets.BASE_URL_WEB }} 
-          BASE_URL_API: ${{ secrets.BASE_URL_API }}
-            
-      - name: Uploading artifact
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: cypress-execution-report
-          path: cypress/reports/html
-          retention-days: 30
-
-  #JOB 3
-  cypress-run-api-tests:
-    needs: eslint
-    name: Cypress run api tests
-    runs-on: ubuntu-22.04
-    container:
-      image: cypress/browsers:node-22.11.0-chrome-130.0.6723.69-1-ff-132.0-edge-130.0.2849.56-1
-      options: --user 1001
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Cypress run api tests
-        uses: cypress-io/github-action@v6
-        with:
-          command: npm run cypress:apiTests
         env:
           USER:  ${{ secrets.USER }}
           PASSWORD: ${{ secrets.PASSWORD }}
