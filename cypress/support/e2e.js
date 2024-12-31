@@ -45,7 +45,7 @@ after(() => {
   //reset app data by api
   cy.resetApp().then(response =>{
     expect(response.status).to.be.equal(200)
-  })        
+  })
 })
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

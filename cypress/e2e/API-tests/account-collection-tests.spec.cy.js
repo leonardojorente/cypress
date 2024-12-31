@@ -12,7 +12,6 @@ describe('API Account Tests', () => {
 
   it('AccountTC01: Add Account', { tags: 'smoke' }, () => {
     AccountPayload.nome = `randomAccountName ${Utils.generateRandomString(4)}`
-    cy.log(`momento 4`)
     cy.createAccount(AccountPayload).then(response =>{
       expect(response.status).to.be.equal(201)
       expect(response.duration).to.not.be.greaterThan(1000)
